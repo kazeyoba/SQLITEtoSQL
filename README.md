@@ -23,6 +23,7 @@ INSERT INTO Produit...' at line 1
 ```
 
 **Import file.sql**
+
 `mysql -u root -p DATABASE_NAME < file.sql`
 
 > **I repeat, in case of error, read the sql file again.**
