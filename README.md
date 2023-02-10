@@ -16,7 +16,7 @@ Here is a resource for error codes:
 https://mariadb.com/kb/en/mariadb-error-codes/
 
 ```text
-/docker-entrypoint-initdb.d # mysql -u root -plannion1234 test < app.sql
+/docker-entrypoint-initdb.d # mysql -u root -p test < app.sql
 ERROR 1064 (42000) at line 49: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's Souls', 79.99, 'img/demons-souls.jpg', 'Jeux-vidéos');
 INSERT INTO Produit...' at line 1
 /docker-entrypoint-initdb.d #
