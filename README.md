@@ -5,3 +5,5 @@ Converti sqlite file to sql file for MariaDB or MySQL
 To use this script, you must provide it with the names of the SQLite and SQL files as command line arguments, like this:
 
 `python sqliteTosql.py database.sqlite database.sql`
+
+I will create an `.sql` file for you.
