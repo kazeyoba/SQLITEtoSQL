@@ -29,8 +29,8 @@ def convert_sqlite_to_sql(sqlite_file, sql_file, user:str = None, password: str 
         
         # Indication pour créer un utilisateur
         if user != None and password != None:
-            f.write(f"CREATE USER {user}@'localhost' IDENTIFIED BY '{password}'")
-            f.write(f"GRANT SELECT, INSERT, UPDATE, DELETE, ON {database_name}.* TO '{user}'@'localhost'")
+            f.write(f"CREATE USER {user}@'localhost' IDENTIFIED BY '{password}'; \n")
+            f.write(f"GRANT SELECT, INSERT, UPDATE, DELETE, ON {database_name}.* TO '{user}'@'localhost'; \n")
         
         # Utilise la table et commence à inscrire des données
         f.write(f"USE {database_name};\n")
@@ -56,19 +56,16 @@ def convert_sqlite_to_sql(sqlite_file, sql_file, user:str = None, password: str 
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser()
-    parser.add_argument('-u', '--username', required = True, help = 'Le nom d'utilisateur à créer')
-    parser.add_argument('-p', '--password', required = True, help = 'Le mot de passe à utiliser')
+    parser.add_argument('-u', '--username', required=False, help = "Ajout d'un utilisateur")
+    parser.add_argument('-p', '--password', required = False, help = "Ajout du mot de passe")
+    parser.add_argument('-i', '--input', required=True, help = "Fichier sqlite")
+    parser.add_argument('-o', '--output', required=True, help = "Fichier de sortie .sql")
 
     args = parser.parse_args()
     
     username = args.username
     password = args.password
+    file_input = args.input
+    file_output = args.output
     
-    if len(sys.argv) != 3:
-        print("Utilisation : python sqliteTosql.py <fichier SQLite> <fichier SQL>")
-        sys.exit(1)
-    
-    
-    sqlite_file = sys.argv[1]
-    sql_file = sys.argv[2]
-    convert_sqlite_to_sql(sqlite_file, sql_file)
+    convert_sqlite_to_sql(sqlite_file=file_input,sql_file=file_output, user=username, password=password)
