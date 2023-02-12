@@ -1,7 +1,6 @@
 # Script pour convertir .sqlite vers .sql 
 # Author: Timaï SELMI
 import sqlite3
-import sys
 import os
 import argparse
 
